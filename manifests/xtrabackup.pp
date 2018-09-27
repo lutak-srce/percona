@@ -1,15 +1,13 @@
-# Class: percona::xtrabackup
+#
+# = Class: percona::xtrabackup
 #
 # This module manages Percona MySQL xtrabackup
 #
 class percona::xtrabackup (
-  $package_ensure = '2.1.1-600.rhel6',
+  $package_name   = 'percona-xtrabackup-24',
 ){
-  require perl::mod::time::hires
-
   package { 'percona-xtrabackup' :
-    ensure   => $package_ensure,
-    provider => 'rpm',
-    source   => "http://www.percona.com/redir/downloads/XtraBackup/LATEST/RPM/rhel6/x86_64/percona-xtrabackup-${package_ensure}.x86_64.rpm",
+    ensure => present,
+    name   => $package_name,
   }
 }
